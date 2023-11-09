@@ -1,0 +1,39 @@
+repo_name: davidosx/R2Convex
+report_id: 29e4f1c9e2d9e3791a51da11684902cd
+repo_type: Public
+timestamp: '2023-11-09T17:01:05+00:00'
+requested_by: davidosx
+provider: github
+branch: master
+detected_tools_count: 3
+tools:
+- name: C++
+  description: Has imperative, object-oriented and generic programming features, while
+    also providing the facilities for low level memory manipulation
+  website_url: http://www.cplusplus.com/
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1049/cplusplus.png
+  detection_source: Repo Metadata
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source: Repo Metadata
+- name: GitHub Actions
+  description: Automate your workflow from idea to production
+  website_url: https://github.com/features/actions
+  open_source: false
+  hosted_saas: true
+  category: Build, Test, Deploy
+  sub_category: Continuous Integration
+  image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source: ".github/workflows/c-cpp.yml"
+  last_updated_by: David Miheev
+  last_updated_on: 2022-09-26 16:06:57.000000000 Z
