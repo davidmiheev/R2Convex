@@ -12,7 +12,7 @@ make
 ```
 
 ## Usage
-Just run: ```./conv```
+Generate test data first: ```./rand``` (optionally ```./rand [points] [seed]```), then run: ```./conv```
 
 
 The program reads the coordinates of points from files: ```data.txt```, ```data1.txt```, ```data2.txt```;
