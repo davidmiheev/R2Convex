@@ -1,21 +1,17 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 int main() {
-      FILE *f;
-      f = fopen("data.txt","w");
-      for(int i = 0; i < 30; i++) {
-         if(i % 8 == 0||i % 8 == 1||i % 8 == 3||i % 8 == 6) fprintf(f,"%f\n", rand()*20./RAND_MAX);
-         if(i % 8 == 2||i % 8 == 4||i % 8 == 5||i % 8 == 7) fprintf(f,"%f\n", rand()*-20./RAND_MAX);
-        } fclose(f);
-      f = fopen("data1.txt","w");
-      for(int i = 0; i < 40; i++) {
-         if(i % 8 == 0||i % 8 == 1||i % 8 == 3||i % 8 == 6) fprintf(f,"%f\n", rand()*20./RAND_MAX);
-         if(i % 8 == 2||i % 8 == 4||i % 8 == 5||i % 8 == 7) fprintf(f,"%f\n", rand()*-20./RAND_MAX);
-        } fclose(f);
-      f = fopen("data2.txt","w");
-      for(int i = 0; i < 32; i++) {
-         if(i % 8 == 0||i % 8 == 1||i % 8 == 3||i % 8 == 6) fprintf(f,"%f\n", rand()*20./RAND_MAX);
-         if(i % 8 == 2||i % 8 == 4||i % 8 == 5||i % 8 == 7) fprintf(f,"%f\n", rand()*-20./RAND_MAX);
-        } fclose(f);
+      srand((unsigned)time(0));
+      const char* names[] = {"data.txt", "data1.txt", "data2.txt"};
+      const int counts[] = {30, 40, 32};
+      for(int k = 0; k < 3; k++) {
+         FILE *f = fopen(names[k], "w");
+         if(!f) { perror(names[k]); return 1; }
+         for(int i = 0; i < counts[k]; i++) {
+            fprintf(f,"%f\n", (rand() & 1 ? 1. : -1.) * rand() * 20. / RAND_MAX);
+         }
+         fclose(f);
+      }
  return 0;
 }

@@ -17,8 +17,6 @@ class CBMP32x
 	unsigned int      ClrUsed;
 	unsigned int      ClrImportant;
 	unsigned char pal[256][4];
- int CheckTmp;
- //do not include pointers up to this line
         union
         {
 	 unsigned int **v;
@@ -26,14 +24,18 @@ class CBMP32x
         };
         unsigned int **g;
         unsigned int **bg;
-        unsigned int *t,*t2;
  CBMP32x(){SetZero();}
- CBMP32x(int nx,int ny,unsigned char InitialValueR=255,unsigned char InitialValueG=255,unsigned char InitialValueB=255);//{SetZero();Width=nx;Height=ny;v=(unsigned int**)allocate_2D_Arrayx(Height,Width,4,1);}
+ CBMP32x(int nx,int ny,unsigned char InitialValueR=255,unsigned char InitialValueG=255,unsigned char InitialValueB=255);
  CBMP32x(const char *sf){SetZero();Load(sf);}
  CBMP32x(const CBMP32x &b){SetZero();CopyOnly(b);}
  ~CBMP32x(){Clean();}
- void SetZero(){v = 0;g = 0;t = 0;t2 = 0;bg = 0;}
- void Clean(){if(v != 0) { delete[] v; delete[] g; delete[] t; delete[] t2; delete[] bg; SetZero(); } }
+ void SetZero(){v = 0;g = 0;bg = 0;Width = 0;Height = 0;}
+ void Clean(){
+  if(v) delete[] (char*)v;
+  if(g) delete[] (char*)g;
+  if(bg) delete[] (char*)bg;
+  SetZero();
+ }
  int Load(const char *sf,double k=1);
  int Save(const char *sf);
  void MakeGrayFromColor();
